@@ -7,11 +7,11 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.androiddevs.mvvmnewsapp.ui.models.Article
 
+
 @Database(
     entities = [Article::class],
     version = 1
 )
-
 @TypeConverters(Converters::class)
 abstract class ArticleDatabase : RoomDatabase() {
 
@@ -33,5 +33,4 @@ abstract class ArticleDatabase : RoomDatabase() {
                 "article_db.db"
             ).build()
     }
-
 }
