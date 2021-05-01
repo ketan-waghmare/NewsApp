@@ -46,10 +46,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     showProgressBar()
                 }
             }
-
         })
-
-
     }
 
     private fun hideProgressBar() {
