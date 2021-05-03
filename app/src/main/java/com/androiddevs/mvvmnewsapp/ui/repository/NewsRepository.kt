@@ -5,13 +5,18 @@ import com.androiddevs.mvvmnewsapp.ui.db.ArticleDatabase
 import com.androiddevs.mvvmnewsapp.ui.models.Article
 
 class NewsRepository(
-    val db : ArticleDatabase
+    val db: ArticleDatabase
 ) {
 
-    suspend fun getBreakingNews(countryCode : String, pageNumber : Int) =
-        RetrofitInstance.api.getBreakingNews(countryCode,pageNumber)
-
+    suspend fun getBreakingNews(countryCode: String, pageNumber: Int) =
+        RetrofitInstance.api.getBreakingNews(countryCode, pageNumber)
 
     suspend fun searchNews(countryCode: String, pageNumber: Int) =
-        RetrofitInstance.api.searchForNews(countryCode,pageNumber)
+        RetrofitInstance.api.searchForNews(countryCode, pageNumber)
+
+    suspend fun upsert(article: Article) = db.getArticleDao().upsert(article)
+
+    fun getSavedNews() = db.getArticleDao().getAllArticles()
+
+    suspend fun deleteArticle(article: Article) = db.getArticleDao().deleteArticle(article)
 }
